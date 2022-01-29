@@ -161,6 +161,7 @@ function process_nomination_email( html_data, emailAddr )
     "sub_photo" : sub_photo,
     "sup_photo" : sup_photo,
     "location" : "https://intel.ingress.com/?pll=" + latitude + ',' + longitude,
+    "google" : "https://maps.google.com/?q=" + + latitude + ',' + longitude,
     "title" : nomination_title,
     "desc" : nomination_desc,
     "result" : "__Portal Submitted__ ",
@@ -262,7 +263,7 @@ function process_edit_email( html_data, emailAddr )
   var title_text = html_data[239]; //.substr(result_text.search(":"),50);
   title_text = title_text.replace("<br/>", "").trim();
   discord_dict["title"] = title_text;
-  discord_dict["result"] = "__Port Edit Submitted__";
+  discord_dict["result"] = "__Portal Edit Submitted__";
   var what_edited = html_data[240];
   if ( what_edited.search("Existing title:") != -1 )
   {
@@ -275,7 +276,7 @@ function process_edit_email( html_data, emailAddr )
     edit = edit.replace("<br/>", "");
     edit = edit.trim();
     var d = edit.split(":");
-    discord_dict["desc"] = discord_dict["desc"] + "\nEdit: " + d[1];
+    discord_dict["desc"] = discord_dict["desc"] + "\nEdit:" + d[1];
   }
   else if ( what_edited.search("Existing location:") != -1 )
   {
@@ -288,8 +289,8 @@ function process_edit_email( html_data, emailAddr )
     lll[0] = lll[0].replace("(", "");
     lll[1] = lll[1].replace(" ", "");
     lll[1] = lll[1].replace(")", "");
-    var link_curr = "https://intel.ingress.com/?pll=" + lll[0] + ',' + lll[1];
-    discord_dict["desc"] = "Location Edited\nCur Location:" + link_curr;
+    var link_curr = "https://maps.google.com/?q=" + lll[0] + ',' + lll[1];
+    discord_dict["desc"] = "Location Edited\nCurrent Location:" + link_curr;
     var edit = html_data[242];
     edit = edit.replace("<br/>", "");
     edit = edit.trim();
@@ -298,8 +299,8 @@ function process_edit_email( html_data, emailAddr )
     d[0] = d[0].replace("(", "");
     d[1] = d[1].replace(" ", "");
     d[1] = d[1].replace(")", "");
-    var link_neww = "https://intel.ingress.com/?pll=" + d[0] + ',' + d[1];
-    discord_dict["desc"] = discord_dict["desc"] + "\nEdit: " + link_neww;
+    var link_neww = "https://maps.google.com/?q=" + d[0] + ',' + d[1];
+    discord_dict["desc"] = discord_dict["desc"] + "\nEdit:" + link_neww;
   }
   discord_dict["color"] = 0xeb34dc;
   Logger.log(discord_dict);
@@ -328,7 +329,7 @@ function post_wayfarer_email_to_discord( post_dict ) {
   var url = "Not Provided";
   if (post_dict["location"] != "None")
   {
-    url = post_dict["location"]
+    url = post_dict["google"]
   }
   if (post_dict["sub_photo"].search("None") == -1) {
     // if we find an imgUrl instead of the word None
