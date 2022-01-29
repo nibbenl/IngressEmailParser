@@ -33,7 +33,7 @@ This does not violate any TOS with Niantic and accesses only your own gmail acco
   * from:(ingress-support@nianticlabs.com) 
   * Has Words: Mission Submission
 * Go back the script editor and select the Trigger button
-![trigger](trigger_button.png)
+![trigger](trigger_button_update.png)
 * Create a new trigger with the following trigger settings
 ![TRIGGER_SETTINGS](trigger_settings.png)
 * Hit save and an authorization window will appear.
@@ -64,8 +64,9 @@ This does not violate any TOS with Niantic and accesses only your own gmail acco
   * Has Words: Mission Submission
 * Open the Spreadsheet that has been shared with you.
 * Open the Script Editor: **Tools->Script Editor**
+![SCRIPTEDITOR](AppScript.png)
 * Go to the script editor and select the Trigger button
-![trigger](trigger_button.png)
+![trigger](trigger_button_update.png)
 * Create a new trigger with the following trigger settings
 ![TRIGGER_SETTINGS](trigger_settings.png)
 * Hit save and an authorization window will appear.
