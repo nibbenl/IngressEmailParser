@@ -290,7 +290,7 @@ function process_edit_email( html_data, emailAddr )
     lll[1] = lll[1].replace(" ", "");
     lll[1] = lll[1].replace(")", "");
     var link_curr = "https://maps.google.com/?q=" + lll[0] + ',' + lll[1];
-    discord_dict["desc"] = "Location Edited\nCurrent Location:" + link_curr;
+    discord_dict["desc"] = "Location Edited\n Current Location: " + link_curr;
     var edit = html_data[242];
     edit = edit.replace("<br/>", "");
     edit = edit.trim();
@@ -300,7 +300,7 @@ function process_edit_email( html_data, emailAddr )
     d[1] = d[1].replace(" ", "");
     d[1] = d[1].replace(")", "");
     var link_neww = "https://maps.google.com/?q=" + d[0] + ',' + d[1];
-    discord_dict["desc"] = discord_dict["desc"] + "\nEdit:" + link_neww;
+    discord_dict["desc"] = discord_dict["desc"] + "\nEditted Location: " + link_neww;
   }
   discord_dict["color"] = 0xeb34dc;
   Logger.log(discord_dict);
